@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/reviews_block"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_card_reviews"
+            android:textAppearance="@style/TextAppearance.Title" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/impression_reviews_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_impression_item_review"/>
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/allReviewsBtn"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_marginTop="22dp"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/colorWindowBackground"
+            app:strokeColor="@color/colorCardStroke"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            app:cornerRadius="22dp"
+            android:textColor="?attr/colorOnSurface"
+            android:textAppearance="@style/TextAppearance.Button"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_title_margin_start">42dp</dimen>
+    <dimen name="toolbar_title_margin_start_main">22dp</dimen>
+    <dimen name="margin_mini">6dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_micro">2dp</dimen>
+    <dimen name="card_elevation">0dp</dimen>
+    <dimen name="card_max_elevation">0dp</dimen>
+    <dimen name="padding_mini">6dp</dimen>
+    <dimen name="recycler_bottom_padding">80dp</dimen>
+</resources>

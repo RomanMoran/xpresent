@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_card_your_info"
+            android:textAppearance="@style/TextAppearance.Title" />
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorLink="@color/acq_colorButton"
+                android:backgroundTint="@color/editTextUnderline"
+                android:layout_margin="@dimen/margin_medium"
+                android:paddingBottom="20dp"
+                android:hint="@string/title_card_attr_name"
+                android:singleLine="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:textAppearance="@style/TextAppearance.EditText" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium"
+                android:backgroundTint="@color/editTextUnderline"
+                android:hint="@string/title_card_attr_phone"
+                android:singleLine="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="20dp"
+                android:textAppearance="@style/TextAppearance.EditText" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/editTextUnderline"
+                android:layout_margin="@dimen/margin_medium"
+                android:hint="@string/title_card_attr_email"
+                android:singleLine="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="20dp"
+                android:textAppearance="@style/TextAppearance.EditText" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.xpresent.xpresent">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup">
+        <activity android:name=".ui.catalog.FullImageActivity"></activity>
+        <activity
+            android:name=".ui.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.auth.AuthVKTokenActivity" />
+        <activity android:name=".ui.auth.AuthVKActivity" />
+        <activity
+            android:name="com.vk.sdk.VKServiceActivity"
+            android:label="ServiceActivity"
+            android:theme="@style/VK.Transparent" />
+        <activity android:name=".ui.auth.OtacActivity" />
+        <activity android:name=".ui.auth.AuthByPhoneActivity" />
+        <activity android:name=".ui.auth.AuthorizationActivity" />
+        <activity android:name=".ui.booking.PaymentResultActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+
+        <activity android:name=".ui.booking.OrderTypeActivity" />
+        <activity android:name=".ui.booking.BuyCertActivity" />
+        <activity android:name=".ui.booking.CalendarActivity" />
+        <activity android:name=".ui.booking.BookActivity" />
+        <activity android:name=".ui.catalog.ImpressionActivity" android:launchMode = "singleTop"/>
+        <activity android:name=".ui.catalog.ReviewsActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" />
+        <activity android:name=".ui.catalog.SetActivity" />
+    </application>
+
+</manifest>

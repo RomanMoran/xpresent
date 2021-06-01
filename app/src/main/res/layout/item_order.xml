@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/default_margin"
+    android:layout_marginStart="@dimen/default_margin"
+    android:layout_marginEnd="@dimen/default_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/impressionImage"
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:src="@drawable/placeholder_details"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/impressionName"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Полет на самолете для троих(от 1 до 3 чел. 20 минут)"
+            android:textAppearance="@style/TextAppearance.Title"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="@dimen/default_margin"
+            android:alpha="0.25"
+            android:src="@drawable/stroke_drawable"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_card_attr_certificate"
+                android:textAppearance="@style/TextAppearance.Card"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/default_margin"
+                />
+
+            <TextView
+                android:id="@+id/certNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="M58594094"
+                android:layout_centerVertical="true"
+                android:textAppearance="@style/TextAppearance.Card.Value.Bold"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_card_attr_secret_code"
+                android:textAppearance="@style/TextAppearance.Card"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/default_margin"
+                />
+
+            <TextView
+                android:id="@+id/certCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="823"
+                android:layout_centerVertical="true"
+                android:textAppearance="@style/TextAppearance.Card.Value.Primary"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="@dimen/default_margin"
+            android:alpha="0.25"
+            android:src="@drawable/stroke_drawable"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_card_attr_order"
+                android:textAppearance="@style/TextAppearance.Card"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/default_margin"
+                />
+
+            <TextView
+                android:id="@+id/orderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7202"
+                android:layout_centerVertical="true"
+                android:textAppearance="@style/TextAppearance.Card.Value.Bold"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_card_attr_offer_state"
+                android:textAppearance="@style/TextAppearance.Card"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/default_margin"
+                />
+
+            <TextView
+                android:id="@+id/orderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Оплачено"
+                android:layout_centerVertical="true"
+                android:textAppearance="@style/TextAppearance.Card.Value.Success"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_card_attr_offer_date"
+                android:textAppearance="@style/TextAppearance.Card"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/default_margin"
+                />
+
+            <TextView
+                android:id="@+id/orderDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="27 янв в 16:30"
+                android:layout_centerVertical="true"
+                android:textAppearance="@style/TextAppearance.Card"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_card_attr_sum_price"
+                android:textAppearance="@style/TextAppearance.Card"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/default_margin"
+                />
+
+            <TextView
+                android:id="@+id/orderSum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.800"
+                android:layout_centerVertical="true"
+                android:textAppearance="@style/TextAppearance.Card.Price.Mini"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/default_margin"
+    android:layout_marginStart="@dimen/margin_mini"
+    android:layout_marginEnd="@dimen/margin_mini"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/imageBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="#E6E6E6">
+
+            <ImageView
+                android:id="@+id/impressionImg"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AppTheme.Chip.Card.Recommended"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginStart="@dimen/default_margin"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/impressionName"
+            android:layout_below="@+id/imageBlock"
+            android:layout_marginTop="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Title"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_below="@+id/impressionName"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Card"
+            android:maxLines="3"
+            />
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/tv_description"
+            android:layout_margin="@dimen/default_margin"
+            android:alpha="0.25"
+            android:src="@drawable/stroke_drawable"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:paddingStart="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingBottom="@dimen/default_padding">
+            <RelativeLayout
+                android:id="@+id/dnameBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_icon3"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_date_range_16dp" />
+
+                <TextView
+                    android:id="@+id/dNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_toEndOf="@id/iv_icon3"
+                    android:textAppearance="@style/TextAppearance.Card" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/hnameBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_mini"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_icon1"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_person" />
+
+                <TextView
+                    android:id="@+id/hNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_toEndOf="@id/iv_icon1"
+                    android:textAppearance="@style/TextAppearance.Card" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

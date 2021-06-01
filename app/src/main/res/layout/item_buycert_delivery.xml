@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Способ получения"
+            android:textAppearance="@style/TextAppearance.Title" />
+
+        <LinearLayout
+            android:id="@+id/ll_chips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/tabDelEmail"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:checked="true"
+                android:layout_marginTop="@dimen/default_margin"
+                android:text="На E-mail"
+                app:chipCornerRadius="8dp"
+                style="@style/AppTheme.ChipDelivery"
+                />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/tabDelCourier"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:checked="false"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/default_margin"
+                android:text="Курьером"
+                app:chipCornerRadius="8dp"
+                style="@style/AppTheme.ChipDelivery"
+                />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/tabDelPoint"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:checked="false"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/default_margin"
+                android:text="Самовывоз"
+                app:chipCornerRadius="8dp"
+                style="@style/AppTheme.ChipDelivery"
+                />
+        </LinearLayout>
+        <include
+            layout="@layout/item_buycert_delivery_email"
+            android:id="@+id/delivery_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"/>
+        <include
+            layout="@layout/item_buycert_delivery_courier"
+            android:id="@+id/delivery_courier"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"/>
+        <include
+            layout="@layout/item_buycert_delivery_points"
+            android:id="@+id/delivery_point"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"/>
+        <RelativeLayout
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etCongratText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:maxLength="200"
+                android:hint="Введите текст поздравления"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/editTextUnderline"
+                android:textAppearance="@style/TextAppearance.EditText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/colorButtonLoading"
+                android:layout_marginStart="@dimen/margin_micro"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_below="@+id/etCongratText"
+                android:text="Объем не должен превышать 200 символов"/>
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

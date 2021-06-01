@@ -1,0 +1,148 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name = "android:windowActionBar">false</item>
+        <item name = "android:windowNoTitle">true</item>
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="colorPrimaryVariant">#1C83A9</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="android:windowBackground">#F5F5F5</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorOnSurface">#393939</item>
+        <item name="colorSecondary">@android:color/white</item>
+        <item name="cardViewStyle">@style/AppTheme.CardView</item>
+        <item name="materialCardViewStyle">@style/AppTheme.MaterialCardView</item>
+        <item name="bottomNavigationStyle">@style/AppTheme.BottomNavigationView</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColorHint">@color/colorOnSurface</item>
+        <item name="radioButtonStyle">@style/Widget.App.RadioButton</item>
+    </style>
+
+    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/bg_spinner</item>
+    </style>
+
+    <style name="AppTheme.Chip" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="ensureMinTouchTargetSize">false</item>
+        <item name="chipIconSize">12dp</item>
+        <item name="textStartPadding">6dp</item>
+        <item name="textEndPadding">0dp</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipMinHeight">0dp</item>
+        <item name="chipBackgroundColor">?attr/colorSurface</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="chipStrokeColor">@color/chip_stroke_color</item>
+        <item name="chipIconTint">@color/chip_icon_color</item>
+        <item name="chipStartPadding">15dp</item>
+        <item name="chipEndPadding">15dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Chip</item>
+        <item name="checkedIconEnabled">false</item>
+        <item name="checkedIcon">@null</item>
+    </style>
+
+    <style name="AppTheme.ChipDelivery" parent="AppTheme.Chip">
+        <item name="android:paddingTop">11dp</item>
+        <item name="android:paddingBottom">11dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="textStartPadding">0dp</item>
+        <item name="textEndPadding">0dp</item>
+        <item name="paddingStart">0dp</item>
+        <item name="paddingEnd">0dp</item>
+        <item name="chipIconSize">0dp</item>
+        <item name="chipStartPadding">0dp</item>
+        <item name="chipEndPadding">0dp</item>
+    </style>
+
+    <style name="AppTheme.ChipDelivery.Active" parent="AppTheme.ChipDelivery">
+        <item name="chipBackgroundColor">?attr/colorPrimary</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+    </style>
+
+    <style name="AppTheme.Chip.Active">
+        <item name="chipIconTint">?attr/colorPrimary</item>
+        <item name="chipStrokeColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Chip.Card" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="ensureMinTouchTargetSize">false</item>
+        <item name="textStartPadding">0dp</item>
+        <item name="textEndPadding">0dp</item>
+        <item name="chipMinHeight">0dp</item>
+        <item name="chipBackgroundColor">?attr/colorSurface</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="chipStartPadding">10dp</item>
+        <item name="chipEndPadding">10dp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textAppearance">@style/TextAppearance.Chip.Card</item>
+    </style>
+
+    <style name="AppTheme.Chip.Card.Sale">
+        <item name="chipBackgroundColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Chip.Card.Recommended">
+        <item name="chipBackgroundColor">#8E24AA</item>
+    </style>
+
+    <style name="AppTheme.CardView" parent="Base.CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardMaxElevation">@dimen/card_max_elevation</item>
+    </style>
+
+    <style name="AppTheme.MaterialCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardMaxElevation">@dimen/card_max_elevation</item>
+        <item name="checkedIcon">@null</item>
+        <item name="cardForegroundColor">@null</item>
+        <item name="checkedIconTint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.MaterialCardView.Outlined">
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/card_stroke_color</item>
+    </style>
+
+    <style name="AppTheme.MaterialCardView.Outlined.CalendarDay">
+        <item name="cardCornerRadius">0dp</item>
+    </style>
+
+    <style name="AppTheme.MaterialCardView.Outlined.CalendarDay.Active">
+        <item name="strokeWidth">1dp</item>
+        <item name="cardBackgroundColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/bottom_nav_item_tint</item>
+        <item name="itemTextColor">@color/bottom_nav_item_tint</item>
+    </style>
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+    <style name="ChipCustomStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="checkedIconEnabled">false</item>
+        <item name="checkedIcon">@null</item>
+    </style>
+
+    <style name="Widget.App.RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.RadioButton</item>
+    </style>
+
+    <style name="ThemeOverlay.App.RadioButton" parent="">
+        <item name="buttonTint">@color/radio_button</item>
+        <item name="android:layout_marginTop">@dimen/margin_medium</item>
+        <item name="android:layout_marginBottom">@dimen/margin_medium</item>
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:paddingStart">@dimen/margin_medium</item>
+    </style>
+</resources>

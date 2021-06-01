@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.catalog.ImpressionsFragment">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_toolbar_impressions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@layout/scene_impressions">
+        <LinearLayout
+            android:id="@+id/ll_chips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/include">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/orderByRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/default_margin"
+                app:chipIcon="@drawable/ic_sort"
+                android:text="@string/action_sort_popularity"
+                android:checkable="true"
+                android:checked="true"
+                style="@style/AppTheme.Chip"
+                />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/orderByPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                app:chipIcon="@drawable/ic_sort"
+                android:text="@string/action_sort_cost"
+                android:checkable="true"
+                style="@style/AppTheme.Chip"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/noImpressions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/ll_chips"
+            android:text="@string/no_impressions"
+            android:textAppearance="@style/TextAppearance.Card" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/impressionsRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ll_chips"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/recycler_bottom_padding"
+            tools:listitem="@layout/item_impression_preview">
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.appcompat.widget.LinearLayoutCompat >

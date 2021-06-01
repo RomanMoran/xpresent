@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance" parent="TextAppearance.AppCompat" />
+
+    <style name="TextAppearance.Title">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.Title.Primary">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Card">
+        <item name="fontFamily">@font/avenirnextcyr_regular</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.EditText">
+        <item name="fontFamily">@font/avenirnextcyr_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:backgroundTint">@color/editTextUnderline</item>
+        <item name="android:textColorLink">@color/acq_colorButton</item>
+    </style>
+
+    <style name="TextAppearance.Card.Surface">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Card.Title" parent="TextAppearance.Title">
+    </style>
+
+    <style name="TextAppearance.Card.Title.Surface">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!--  <style name="TextAppearance.BottomNavBar">
+         <item name="fontFamily">@font/avenirnextcyr_demi</item>
+         <item name="android:textSize">12sp</item>
+         <item name="android:textColor"></item>
+        color selector тут ваще все переделать
+    </style>-->
+
+    <style name="TextAppearance.Chip">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.Chip.Card">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Card.Price">
+        <item name="fontFamily">@font/sf_ui_text_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.Card.Code">
+        <item name="fontFamily">@font/sf_ui_text_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Card.Price.Medium">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Card.Price.Medium.Primary">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Card.Price.Mini">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="TextAppearance.Card.Price.CrossOut" parent="TextAppearance.Card.Price.Mini">
+        <item name="fontFamily">@font/sf_ui_text_regular</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.Card.Price.CrossOut.Mini">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Card.PeopleCount">
+        <item name="fontFamily">@font/avenirnextcyr_light</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    
+    <style name="TextAppearance.Card.Mark">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.Card.Cashback">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.Card.Action">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Card.Action.Dark">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="TextAppearance.Card.Value">
+        <item name="fontFamily">@font/avenirnextcyr_medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.Title.Subtitle">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="TextAppearance.Card.Value.Hint">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+    </style>
+
+    <style name="TextAppearance.Card.Date">
+        <item name="fontFamily">@font/avenirnextcyr_light</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.Card.Time">
+        <item name="fontFamily">@font/avenirnextcyr_medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.Card.Value.Primary">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Card.Value.Success">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textColor">@color/colorSuccess</item>
+    </style>
+
+    <style name="TextAppearance.Card.Value.Bold">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+    </style>
+
+    <style name="TextAppearance.Button">
+        <item name="fontFamily">@font/avenirnextcyr_regular</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.Button.Surface">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Calendar">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#252525</item>
+    </style>
+
+    <style name="TextAppearance.Calendar.Disabled">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#80252525</item>
+    </style>
+
+    <style name="TextAppearance.Calendar.Surface">
+        <item name="fontFamily">@font/avenirnextcyr_demi</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Loading">
+        <item name="fontFamily">@font/avenirnextcyr_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+</resources>

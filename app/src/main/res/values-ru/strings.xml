@@ -1,0 +1,154 @@
+<resources>
+    <string name="app_name">Xpresent</string>
+    <string name="title_home">Впечатления</string>
+    <string name="title_certificates">Сертификаты</string>
+    <string name="title_account">Профиль</string>
+
+    <string name="choose_city">Выберите город</string>
+    <string-array name="cities">
+        <item>Москва</item>
+        <item>Санкт-Петербург</item>
+        <item>Екатеринбург</item>
+    </string-array>
+
+    <string-array name="cities_declesnion">
+        <item>Москве</item>
+        <item>Санкт-Петербурге</item>
+        <item>Екатеринбурге</item>
+    </string-array>
+
+    <string name="loading">Загрузка…</string>
+
+    <string name="main_title">Впечатления в </string>
+
+    <string name="fulltext">Описание</string>
+    <string name="reviews">Отзывы</string>
+    <string name="review_list">Отзывов</string>
+    <string name="reviews_all">Посмотреть все</string>
+    <string name="additional_info">Дополнительная информация</string>
+    <string name="impression_address">Адрес проведения</string>
+    <string name="no_server_connection">Не удалось подключиться к серверу. Проверьте подключение к интернету.</string>
+
+    <string name="choose_date">Выберите дату</string>
+    <string name="booking_title">Забронировать</string>
+    <string name="pay_btn">Перейти к оплате</string>
+    <string name="confirm_btn">Купить</string>
+    <string name="clientName">Имя</string>
+    <string name="clientPhone">Телефон</string>
+    <string name="clientEmail">Email</string>
+    <string name="buttonNext">Далее</string>
+    <string name="buy_agree">Необходимо согласиться на обработку персональных данных и правилами пользования сертификатом</string>
+    <string name="enter_name">Введите ваше имя</string>
+    <string name="enter_phone">Введите номер телефона</string>
+    <string name="enter_email">Введите email</string>
+    <string name="enter_delivery_address">Введите адрес доставки</string>
+
+    <string name="payment_coment">Оплата заказа №</string>
+    <string name="enter_search">Введите ключевое слово от 3 символов для поиска</string>
+    <string name="title_search">Поиск</string>
+    <string name="no_impressions">По такому запросу нет услуг</string>
+    <string name="no_sets">По такому запросу нет наборов</string>
+    <string name="no_favorites">Добавляйте услуги в этот раздел, нажимая на иконку сердечка в услуге</string>
+    <string name="at">в</string>
+    <string name="payment_failed">Оплата не прошла. Попробуйте еще раз позже.</string>
+
+
+    <string name="signin_method">Выберите способ входа</string>
+    <string name="signInVK">Вход через Вконтакте</string>
+    <string name="signInByPhone">Вход по телефону</string>
+    <string name="enter_valid_phone">Введите корретный номер телефона</string>
+    <string name="nextBnt">Далее</string>
+    <string name="smsCode">Код из SMS</string>
+    <string name="invalid_sms_code">Неверный код. Попробуйте еще раз.</string>
+    <string name="confirmBtn">Подтвердить</string>
+
+    <string name="error_title">Ошибка</string>
+    <string name="error_message">Что-то пошло не так</string>
+
+    <string name="successful_payment">Оплата прошла успешно</string>
+
+    <string name="cert_login">Чтобы увидеть список ваших сертификатов, необходимо авторизоваться</string>
+    <string name="no_certs">Здесь будут отображаться ваши сертификаты</string>
+    <string name="log_in_btn">Авторизация</string>
+
+    <string name="my_certificates">На главную</string>
+    <string name="order_number">Заказ №:</string>
+    <string name="sert_number">Сертификат №:</string>
+    <string name="secret_code">Секретный код:</string>
+    <string name="organizer">Организатор</string>
+
+    <string name="my_account">Мой профиль</string>
+    <string name="my_cashback">Мои бонусы</string>
+    <string name="cashback">Бонусы</string>
+    <string name="used_cashback">Использовано бонусов</string>
+    <string name="available_cashback">Доступные бонусы</string>
+    <string name="cashback_you_have">У вас бонусов</string>
+    <string name="cashback_use">Использовать</string>
+    <string name="cashback_use2">бонусов в счет оплаты?</string>
+    <string name="get_bonus">Получите</string>
+    <string name="get_bonus2">бонусов начислим за заказ</string>
+    <string name="total_price">Итого</string>
+    <string name="log_off">Выйти из аккаунта</string>
+    <string name="title_favorites">Избранное</string>
+
+    <string-array name="month_array">
+        <item>Январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
+    </string-array>
+
+    <string name="city">Москва</string>
+    <string name="ruble">\u20BD</string>
+    <string name="impressions_toolbar_title">Впечатления в</string>
+    <string name="recommended">Рекомендуем</string>
+    <string name="action_sort_cost">Стоимость</string>
+    <string name="title_toolbar_booking">Забронировать</string>
+    <string name="title_toolbar_choose_login">Выберите способ входа</string>
+    <string name="title_toolbar_my_certificates">Мои сертификаты</string>
+    <string name="title_card_description">Описание</string>
+    <string name="title_card_reviews">Отзывы</string>
+    <string name="title_card_address">Адрес</string>
+    <string name="title_card_phone">Телефон</string>
+    <string name="title_card_work_time">Часы работы</string>
+    <string name="title_card_offer_list">Список предложений</string>
+    <string name="title_card_additional_info">Дополнительная информация</string>
+    <string name="title_card_attr_certificate">Сертификат №</string>
+    <string name="title_card_attr_secret_code">Секретный код</string>
+    <string name="title_card_attr_order">Заказ №</string>
+    <string name="title_card_attr_offer_state">Статус заказа</string>
+    <string name="title_card_attr_offer_date">Дата оформления</string>
+    <string name="title_card_attr_sum_price">Стоимость</string>
+    <string name="action_edit">Изменить</string>
+    <string name="title_card_choose_date_and_time">Выберите дату и время</string>
+    <string name="title_card_attr_action_time">Время посещения</string>
+    <string name="title_card_your_info">Ваши данные</string>
+    <string name="title_card_attr_name">Имя</string>
+    <string name="title_card_attr_phone">Телефон</string>
+    <string name="title_card_attr_email">E-mail</string>
+    <string name="title_card_info">На указанный e-mail будет отправлен сертификат</string>
+    <string name="title_card_price">Стоимость</string>
+    <string name="price_base">Базовая стоимость</string>
+    <string name="price_with_discount">Стоимость со скидкой</string>
+    <string name="delivery_price">Доставка</string>
+    <string name="title_loading">Загрузка</string>
+    <string name="title_wait_please">Пожалуйста, подождите...</string>
+    <string name="action_registration_in_progress">Идет оформление</string>
+    <string name="action_continue">Продолжить</string>
+    <string name="action_sort_popularity">Популярность</string>
+    <string name="title_authorize_please">Пожалуйста, авторизуйтесь</string>
+    <string name="title_authorize_info">Для того, чтобы забронировать выбранное вами впечатление, вам необходимо авторизоваться.</string>
+    <string name="action_login_vk">Войти через Вконтакте</string>
+    <string name="action_login_google">Войти через Google</string>
+    <string name="action_login_yandex">Войти через Яндекс</string>
+    <string name="action_login_phone">Войти по телефону</string>
+    <string name="action_search">Введите название услуги</string>
+</resources>

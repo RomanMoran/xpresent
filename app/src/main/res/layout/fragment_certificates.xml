@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.certificates.CertificatesFragment">
+        <include layout="@layout/layout_toolbar_only_title"
+            android:id="@+id/include" />
+        <TextView
+            android:id="@+id/noData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:visibility="gone"
+            android:text="@string/no_certs"
+            android:textAppearance="@style/TextAppearance.Card" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/certificatesRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/recycler_bottom_padding"
+            tools:listitem="@layout/item_order"/>
+</LinearLayout>

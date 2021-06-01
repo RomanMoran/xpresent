@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.catalog.ImpressionActivity"
+    android:background="@color/colorWindowBackground">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_toolbar_impression_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/sv_body"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/bottom_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#E6E6E6">
+
+                <ImageView
+                    android:id="@+id/setImg"
+                    android:padding="@dimen/padding_mini"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:src="#E6E6E6" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AppTheme.Chip.Card.Recommended"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    />
+            </RelativeLayout>
+
+            <include layout="@layout/item_set_short_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin">
+            </include>
+
+            <include
+                layout="@layout/item_set_impressions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_mini"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_mini" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        app:srcCompat="@drawable/bottom_nav_shadow_drawable"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_container" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_container"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="@dimen/default_padding"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/cartCashback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:textAppearance="@style/TextAppearance.Card.Cashback"/>
+
+            <TextView
+                android:id="@+id/cartPrice"
+                android:layout_below="@id/cartCashback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="               "
+                android:textAppearance="@style/TextAppearance.Card.Price" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBook"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="32dp"
+                android:layout_toEndOf="@+id/cartPrice"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="0dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:text="@string/confirm_btn"
+                android:textAppearance="@style/TextAppearance.Button.Surface"
+                app:cornerRadius="22dp"
+                app:ensureMinTouchTargetSize="false" />
+        </RelativeLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</androidx.constraintlayout.widget.ConstraintLayout>
