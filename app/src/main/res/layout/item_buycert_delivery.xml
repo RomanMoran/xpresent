@@ -1,119 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/default_padding">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="Способ получения"
-            android:textAppearance="@style/TextAppearance.Title" />
+            android:textAppearance="@style/TextAppearance.Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tabDelEmail"
+            style="@style/AppTheme.ChipDelivery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:checkable="true"
+            android:checked="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/by_email"
+            app:chipCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tabDelPoint"
+            app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tabDelPoint"
+            app:layout_constraintTop_toTopOf="@+id/tabDelPoint" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tabDelCourier"
+            style="@style/AppTheme.ChipDelivery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:checkable="true"
+            android:checked="false"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/by_courier"
+            app:chipCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/tabDelPoint"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tabDelPoint"
+            style="@style/AppTheme.ChipDelivery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checkable="true"
+            android:checked="false"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/self_pickup"
+            app:chipCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tabDelCourier"
+            app:layout_constraintEnd_toStartOf="@+id/tabDelEmail"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tabDelCourier"
+            app:layout_constraintTop_toTopOf="@+id/tabDelCourier" />
 
         <LinearLayout
-            android:id="@+id/ll_chips"
-            android:layout_width="match_parent"
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/tabDelEmail"
+            app:layout_constraintStart_toStartOf="@+id/tabDelCourier"
+            app:layout_constraintTop_toBottomOf="@+id/tabDelCourier">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/tabDelEmail"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:checked="true"
-                android:layout_marginTop="@dimen/default_margin"
-                android:text="На E-mail"
-                app:chipCornerRadius="8dp"
-                style="@style/AppTheme.ChipDelivery"
-                />
+            <include
+                android:id="@+id/delivery_email"
+                layout="@layout/item_buycert_delivery_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/tabDelCourier"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
+            <include
+                android:id="@+id/delivery_courier"
+                layout="@layout/item_buycert_delivery_courier"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:checked="false"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/default_margin"
-                android:text="Курьером"
-                app:chipCornerRadius="8dp"
-                style="@style/AppTheme.ChipDelivery"
-                />
+                android:visibility="gone" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/tabDelPoint"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
+            <include
+                android:id="@+id/delivery_point"
+                layout="@layout/item_buycert_delivery_points"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:checked="false"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/default_margin"
-                android:text="Самовывоз"
-                app:chipCornerRadius="8dp"
-                style="@style/AppTheme.ChipDelivery"
-                />
+                android:visibility="gone" />
+
         </LinearLayout>
-        <include
-            layout="@layout/item_buycert_delivery_email"
-            android:id="@+id/delivery_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"/>
-        <include
-            layout="@layout/item_buycert_delivery_courier"
-            android:id="@+id/delivery_courier"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"/>
-        <include
-            layout="@layout/item_buycert_delivery_points"
-            android:id="@+id/delivery_point"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"/>
-        <RelativeLayout
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/etCongratText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="20dp"
-                android:maxLength="200"
-                android:hint="Введите текст поздравления"
-                android:layout_centerVertical="true"
-                android:backgroundTint="@color/editTextUnderline"
-                android:textAppearance="@style/TextAppearance.EditText" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/colorButtonLoading"
-                android:layout_marginStart="@dimen/margin_micro"
-                android:layout_marginTop="@dimen/default_margin"
-                android:layout_below="@+id/etCongratText"
-                android:text="Объем не должен превышать 200 символов"/>
-        </RelativeLayout>
-    </LinearLayout>
+        <EditText
+            android:id="@+id/etCongratText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/editTextUnderline"
+            android:hint="Введите текст поздравления"
+            android:maxLength="200"
+            android:paddingBottom="20dp"
+            android:textAppearance="@style/TextAppearance.EditText"
+            app:layout_constraintEnd_toEndOf="@+id/tabDelEmail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tabDelCourier"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/hintCongratText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/avenirnextcyr_regular"
+            android:text="Объем не должен превышать 200 символов"
+            android:textColor="@color/colorButtonLoading"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/etCongratText"
+            app:layout_constraintTop_toBottomOf="@+id/etCongratText" />
+
+        <include
+            android:id="@+id/toWhomLayout"
+            layout="@layout/item_to_whom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/hintCongratText"
+            app:layout_constraintStart_toStartOf="@+id/hintCongratText"
+            app:layout_constraintTop_toBottomOf="@+id/hintCongratText"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

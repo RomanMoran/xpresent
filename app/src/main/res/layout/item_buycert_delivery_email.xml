@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/emailBlock"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/emailBlock"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Выберите внешний вид сертификата"/>
+        android:text="Выберите внешний вид сертификата" />
+
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
-        android:layout_marginTop="@dimen/default_margin"
         android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/default_margin"
+        app:iss_auto_cycle="false"
         app:iss_corner_radius="30"
         app:iss_placeholder="@drawable/placeholder_details"
-        app:iss_selected_dot="@drawable/slider_selected_dot"
-        android:layout_height="200dp"
-        app:iss_auto_cycle="false" />
+        app:iss_selected_dot="@drawable/slider_selected_dot" />
+
 </LinearLayout>

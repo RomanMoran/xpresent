@@ -150,5 +150,13 @@
     <string name="action_login_yandex">Войти через Яндекс</string>
     <string name="action_login_phone">Войти по телефону</string>
     <string name="action_search">Введите название услуги</string>
+    <string name="by_courier">Курьером</string>
+    <string name="self_pickup">Самовывоз</string>
+    <string name="by_email">На E-mail</string>
+    <string name="to_myself">Себе</string>
+    <string name="for_present">В подарок</string>
+    <string name="hnt_recipien_email">На указанный e-mail будет отправлен сертификат</string>
+    <string name="recipient_email">E-mail получателя</string>
+    <string name="comment">Комментарий</string>
 
 </resources>

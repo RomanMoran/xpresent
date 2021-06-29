@@ -69,13 +69,13 @@
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginEnd="@dimen/default_margin"/>
 
-            <include layout="@layout/item_impression_reviews"
+            <include
+                layout="@layout/item_impression_reviews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginStart="@dimen/default_margin"
-                android:layout_marginEnd="@dimen/default_margin">
-            </include>
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/default_margin"/>
 
             <include layout="@layout/item_impression_description"
                 android:layout_marginTop="@dimen/margin_medium"

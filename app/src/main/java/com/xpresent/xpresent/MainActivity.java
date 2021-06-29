@@ -5,6 +5,8 @@
  */
 package com.xpresent.xpresent;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

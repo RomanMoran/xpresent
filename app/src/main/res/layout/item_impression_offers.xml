@@ -18,11 +18,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/impression_offer_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_impression_item_offer"/>
+                tools:itemCount="3"
+                tools:listitem="@layout/item_impression_item_offer" />
         </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -43,6 +43,7 @@ import com.xpresent.xpresent.model.Item;
 import com.xpresent.xpresent.requests.ServerConnector;
 import com.xpresent.xpresent.ui.booking.CalendarActivity;
 import com.xpresent.xpresent.ui.booking.OrderTypeActivity;
+import com.xpresent.xpresent.util.UtilKt;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,6 +56,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+
+import kotlin.collections.CollectionsKt;
 
 
 public class ImpressionActivity extends AppCompatActivity implements SelectedItem {
@@ -85,12 +88,7 @@ public class ImpressionActivity extends AppCompatActivity implements SelectedIte
         TextView titleTV = findViewById(R.id.title);
         titleTV.setText(impressionName);
         ImageView backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               onBackPressed();
-            }
-        });
+        backBtn.setOnClickListener(v -> onBackPressed());
 
         // Offers
         RecyclerView offersRecycler = findViewById(R.id.impression_offer_list);
@@ -107,12 +105,7 @@ public class ImpressionActivity extends AppCompatActivity implements SelectedIte
         reviewAdapter.setImpressionParams(impressionId, impressionName);
         reviewsRecycler.setAdapter(reviewAdapter);
         materialButton = findViewById(R.id.allReviewsBtn);
-        materialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickAllReviews(v);
-            }
-        });
+        materialButton.setOnClickListener(v -> onClickAllReviews(v));
         // Favorites
         favoritesCheckBox = findViewById(R.id.favorites);
         favoriteSet = settings.getStringSet("favorites", null);
@@ -166,6 +159,21 @@ public class ImpressionActivity extends AppCompatActivity implements SelectedIte
         Connector.execute(mapPost);
     }
 
+    private void initReviewList(int count) {
+        CollectionsKt.sortBy(reviewList, it -> UtilKt
+                .toCalendar(it.getParam("date_insert"), "yyyy-MM-dd hh:mm:ss")
+                .getTimeInMillis()
+        );
+        CollectionsKt.reverse(reviewList);
+        List<Item> cache = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            cache.add(reviewList.get(i));
+        }
+        reviewList.clear();
+        reviewList.addAll(cache);
+        reviewAdapter.notifyDataSetChanged();
+    }
+
     @SuppressLint("SetJavaScriptEnabled")
     private void showResult(String result){
         try {
@@ -214,9 +222,8 @@ public class ImpressionActivity extends AppCompatActivity implements SelectedIte
                 JSONArray reviewJson = impression.getJSONArray("review");
                 int reviewCount = reviewJson.length();
                 if(reviewCount > 0) {
-                    int count = Math.min(reviewCount, config.REVIEWS_ON_PAGE);
                     num=0;
-                    for (int i = 0; i < count; i++) {
+                    for (int i = 0; i < reviewCount; i++) {
                         JSONObject review = reviewJson.getJSONObject(i);
                         Map<String,String> paramsReview = new HashMap<>();
                         String advantages = review.getString("advantages");
@@ -238,7 +245,7 @@ public class ImpressionActivity extends AppCompatActivity implements SelectedIte
                         }
                         reviewList.add(new Item(paramsReview, num++));
                     }
-                    reviewAdapter.notifyDataSetChanged();
+                    initReviewList(Math.min(reviewCount, config.REVIEWS_ON_PAGE));
                     if(reviewCount > config.REVIEWS_ON_PAGE){
                         String watchAllBtn = getResources().getString(R.string.reviews_all)+" ("+reviewCount+")";
                         materialButton.setText(watchAllBtn);

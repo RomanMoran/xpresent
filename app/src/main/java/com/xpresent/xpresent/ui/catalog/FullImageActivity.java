@@ -12,6 +12,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -37,11 +38,9 @@ public class FullImageActivity extends AppCompatActivity {
         progressDialog.show();
         // load full image
         ImageView fullImage = findViewById(R.id.imgDisplay);
-        Bundle extras = getIntent().getExtras();
-        String imgFullUrl = extras.getString("imgFullUrl");
 
         Glide.with(this)
-                .load(config.HOST_NAME+imgFullUrl)
+                .load(imgUrl())
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -57,12 +56,18 @@ public class FullImageActivity extends AppCompatActivity {
                 })
                 .into(fullImage);
         // close button
-        ImageView closeBtn = findViewById(R.id.btnClose);
-        closeBtn.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnClose).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
+    }
+
+    private String imgUrl() {
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) return "";
+        String url = extras.getString("imgFullUrl");
+        return url.startsWith(config.HOST_NAME) ? url : config.HOST_NAME + url;
     }
 }

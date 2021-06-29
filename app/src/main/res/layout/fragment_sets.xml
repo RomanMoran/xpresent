@@ -18,7 +18,7 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutDescription="@layout/scene_sets">
+        app:layoutDescription="@xml/fragment_sets_scene">
         <HorizontalScrollView
             android:id="@+id/scrollFilter"
             android:layout_width="match_parent"

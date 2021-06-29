@@ -76,12 +76,7 @@ public class SetsFragment extends Fragment implements SelectedItem {
         catNameTV = view.findViewById(R.id.title);
         catNameTV.setText(categoryName);
         ImageView backBtn = view.findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().onBackPressed();
-            }
-        });
+        backBtn.setOnClickListener(v -> getActivity().onBackPressed());
         // get city from storage
         SharedPreferences settings = Activity.getSharedPreferences("xp_client", Context.MODE_PRIVATE);
         cityId = settings.getInt("cityId", 1);
@@ -96,76 +91,58 @@ public class SetsFragment extends Fragment implements SelectedItem {
         getSets(false, to);
 
         // auto loading of impressions into recyclerview
-        adapter.setLoadMoreInterface(new LoadMoreInterface() {
-            @Override
-            public void onLoadMoreInterface() {
-                if(currentPage<=maxPage) {
-                    items.add(null); // show loading item
-                    adapter.notifyItemInserted(items.size() - 1);
-                    getSets(true, to);
-                }
+        adapter.setLoadMoreInterface(() -> {
+            if(currentPage<=maxPage) {
+                items.add(null); // show loading item
+                adapter.notifyItemInserted(items.size() - 1);
+                getSets(true, to);
             }
         });
 
         // search
         RelativeLayout searchBtn = view.findViewById(R.id.searchBlock);
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SearchFragment searchFragment = new SearchFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, searchFragment).addToBackStack(null);
-                fragmentTransaction.commit();
-            }
+        searchBtn.setOnClickListener(v -> {
+            SearchFragment searchFragment = new SearchFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.nav_host_fragment, searchFragment).addToBackStack(null);
+            fragmentTransaction.commit();
         });
         // order by TO (male, female, ...)
         orderByMale = view.findViewById(R.id.orderByMale);
         orderByFeMale = view.findViewById(R.id.orderByFeMale);
         orderByCouple = view.findViewById(R.id.orderByCouple);
         orderByChild = view.findViewById(R.id.orderByChild);
-        orderByMale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                to = orderByMale.isChecked() ? 1 : 0;
-                getSertsByTO(to);
-                orderByFeMale.setChecked(false);
-                orderByCouple.setChecked(false);
-                orderByChild.setChecked(false);
-            }
+        orderByMale.setOnClickListener(v -> {
+            to = orderByMale.isChecked() ? 1 : 0;
+            getSertsByTO(to);
+            orderByFeMale.setChecked(false);
+            orderByCouple.setChecked(false);
+            orderByChild.setChecked(false);
         });
 
-        orderByFeMale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                to = orderByFeMale.isChecked() ? 2 : 0;
-                getSertsByTO(to);
-                orderByMale.setChecked(false);
-                orderByCouple.setChecked(false);
-                orderByChild.setChecked(false);
-            }
+        orderByFeMale.setOnClickListener(v -> {
+            to = orderByFeMale.isChecked() ? 2 : 0;
+            getSertsByTO(to);
+            orderByMale.setChecked(false);
+            orderByCouple.setChecked(false);
+            orderByChild.setChecked(false);
         });
 
-        orderByCouple.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                to = orderByCouple.isChecked() ? 15 : 0;
-                getSertsByTO(to);
-                orderByFeMale.setChecked(false);
-                orderByMale.setChecked(false);
-                orderByChild.setChecked(false);
-            }
+        orderByCouple.setOnClickListener(v -> {
+            to = orderByCouple.isChecked() ? 15 : 0;
+            getSertsByTO(to);
+            orderByFeMale.setChecked(false);
+            orderByMale.setChecked(false);
+            orderByChild.setChecked(false);
         });
 
-        orderByChild.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                to = orderByChild.isChecked() ? 18 : 0;
-                getSertsByTO(to);
-                orderByFeMale.setChecked(false);
-                orderByCouple.setChecked(false);
-                orderByMale.setChecked(false);
-            }
+        orderByChild.setOnClickListener(v -> {
+            to = orderByChild.isChecked() ? 18 : 0;
+            getSertsByTO(to);
+            orderByFeMale.setChecked(false);
+            orderByCouple.setChecked(false);
+            orderByMale.setChecked(false);
         });
 
         return view;

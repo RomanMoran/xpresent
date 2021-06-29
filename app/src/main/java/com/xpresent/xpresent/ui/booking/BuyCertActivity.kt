@@ -5,6 +5,7 @@
  */
 package com.xpresent.xpresent.ui.booking
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
@@ -18,13 +19,19 @@ import androidx.appcompat.app.AppCompatActivity
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemChangeListener
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.gms.wallet.WalletConstants
 import com.google.android.material.chip.Chip
 import com.xpresent.xpresent.R
 import com.xpresent.xpresent.config.config
+import com.xpresent.xpresent.custom_view.SelectorButton
 import com.xpresent.xpresent.requests.ServerConnector
-import com.xpresent.xpresent.requests.ServerConnector.AsyncResponse
+import com.xpresent.xpresent.ui.catalog.FullImageActivity
+import com.xpresent.xpresent.util.dpToPx
+import com.xpresent.xpresent.util.drawablesBottom
+import com.xpresent.xpresent.util.paddingTop
+import com.xpresent.xpresent.util.string
 import org.json.JSONException
 import org.json.JSONObject
 import ru.tinkoff.acquiring.sdk.AcquiringSdk
@@ -77,8 +84,14 @@ class BuyCertActivity : AppCompatActivity() {
     private var tabDelEmail: Chip? = null
     private var tabDelCourier: Chip? = null
     private var tabDelPoint: Chip? = null
+    private lateinit var selectorButton: SelectorButton
+    private lateinit var toWhomLayout: LinearLayout
+    private lateinit var etRecipientEmailText: EditText
+    private lateinit var hintRecipientEmailText: TextView
+    private lateinit var etCommentsText: EditText
     private var deliveryId: Int = 3 // 3 - электронный, 1 - курьером, 2 - самовывоз
     private var viewId: Int = 3 // вид шаблона сертификата
+    private var totalPrice: Int = 0 // вид шаблона сертификата
     private var orderPricePay: Int = 0 // сумма заказа для бесплатной доставки
     private var deliveryPrice: Int = 0 // стоимость курьерской доставки
     private var orderPricePickupPay: Int = 0 // сумма заказа для бесплатной доставки
@@ -99,6 +112,12 @@ class BuyCertActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buy_cert)
+
+        selectorButton = findViewById(R.id.selectorButton)
+        toWhomLayout = findViewById(R.id.toWhomLayout)
+        etRecipientEmailText = findViewById(R.id.etRecipientEmailText)
+        hintRecipientEmailText = findViewById(R.id.hintRecipientEmailText)
+        etCommentsText = findViewById(R.id.etCommentsText)
 
         tinkoffAcquiring = TinkoffAcquiring(config.TINKOFF_TERMINAL_KEY, config.TINKOFF_PASSWORD, config.TINKOFF_PUBLIC_KEY)
         AcquiringSdk.isDeveloperMode = false // используется тестовый URL, деньги с карт не списываются
@@ -121,9 +140,11 @@ class BuyCertActivity : AppCompatActivity() {
         tabDelEmail = findViewById(R.id.tabDelEmail)
         tabDelCourier = findViewById(R.id.tabDelCourier)
         tabDelPoint = findViewById(R.id.tabDelPoint)
-        tabDelEmail!!.setOnClickListener { onClickTabDel("EMAIL") }
-        tabDelCourier!!.setOnClickListener { onClickTabDel("COURIER") }
-        tabDelPoint!!.setOnClickListener { onClickTabDel("POINT") }
+        tabDelEmail?.setOnClickListener { onClickTabDel("EMAIL") }
+        tabDelCourier?.setOnClickListener { onClickTabDel("COURIER") }
+        tabDelPoint?.setOnClickListener { onClickTabDel("POINT") }
+        selectorButton.onSelectedListener { initToWhom(true) }
+        initToWhom(true)
         // payment method
         val paymentMethod = findViewById<RadioGroup>(R.id.paymentMethod)
         paymentMethod.setOnCheckedChangeListener { group, checkedId ->
@@ -132,8 +153,7 @@ class BuyCertActivity : AppCompatActivity() {
         // set up google pay button
         setupGooglePay()
         // proceed to payment
-        val buttonBook = findViewById<Button>(R.id.btnBook)
-        buttonBook.setOnClickListener { onClickBook(paymentId) }
+        buttonBook?.setOnClickListener { onClickBook(paymentId) }
         // back button
         val backBtn = findViewById<ImageView>(R.id.iv_nav)
         backBtn.setOnClickListener { onBackPressed() }
@@ -164,7 +184,7 @@ class BuyCertActivity : AppCompatActivity() {
         val pointTabBlock = findViewById<LinearLayout>(R.id.delivery_point)
         val radioCash = findViewById<RadioButton>(R.id.radioCash)
         val cashLine = findViewById<View>(R.id.cashLine)
-        orderSum = settings!!.getInt("orderSum", 0)
+        orderSum = settings?.getInt("orderSum", 0) ?: 0
 
         when(type){
             "EMAIL" -> {
@@ -172,6 +192,7 @@ class BuyCertActivity : AppCompatActivity() {
                 emailTabBlock.visibility = View.VISIBLE
                 courierTabBlock.visibility = View.GONE
                 pointTabBlock.visibility = View.GONE
+                initToWhom(true)
                 tabDelEmail!!.isChecked = true
                 tabDelCourier!!.isChecked = false
                 tabDelPoint!!.isChecked = false
@@ -184,6 +205,7 @@ class BuyCertActivity : AppCompatActivity() {
                 emailTabBlock.visibility = View.GONE
                 courierTabBlock.visibility = View.VISIBLE
                 pointTabBlock.visibility = View.GONE
+                initToWhom()
                 tabDelEmail!!.isChecked = false
                 tabDelCourier!!.isChecked = true
                 tabDelPoint!!.isChecked = false
@@ -191,13 +213,13 @@ class BuyCertActivity : AppCompatActivity() {
                 radioCash.visibility = View.VISIBLE
                 cashLine.visibility = View.VISIBLE
                 deliveryOrderPrice = if(orderSum < orderPricePay) deliveryPrice else 0
-                orderSum += deliveryOrderPrice
             }
             "POINT" -> {
                 deliveryId = 2
                 emailTabBlock.visibility = View.GONE
                 courierTabBlock.visibility = View.GONE
                 pointTabBlock.visibility = View.VISIBLE
+                initToWhom()
                 tabDelEmail!!.isChecked = false
                 tabDelCourier!!.isChecked = false
                 tabDelPoint!!.isChecked = true
@@ -205,7 +227,6 @@ class BuyCertActivity : AppCompatActivity() {
                 radioCash.visibility = View.VISIBLE
                 cashLine.visibility = View.VISIBLE
                 deliveryOrderPrice = if(orderSum < orderPricePickupPay) pickupPrice else 0
-                orderSum += deliveryOrderPrice
                 setPickupPriceDelivery(findViewById(R.id.radioGroup))
             }
         }
@@ -214,8 +235,14 @@ class BuyCertActivity : AppCompatActivity() {
         }
         val delPriceTV = findViewById<TextView>(R.id.delivery_price)
         val totalPriceTV = findViewById<TextView>(R.id.total_price)
-        delPriceTV.text = deliveryOrderPrice.toString() + " " + config.RUB
-        totalPriceTV.text = orderSum.toString() + " " + config.RUB
+        delPriceTV.text = "$deliveryOrderPrice ${config.RUB}"
+        totalPriceTV.text = "${orderSum + deliveryOrderPrice} ${config.RUB}"
+    }
+
+    private fun initToWhom(isVisible: Boolean = false) {
+        toWhomLayout.visibility = if (isVisible) View.VISIBLE else View.GONE
+        etRecipientEmailText.visibility = if (selectorButton.isSecond) View.VISIBLE else View.GONE
+        hintRecipientEmailText.visibility = if (selectorButton.isSecond) View.VISIBLE else View.GONE
     }
 
     private fun onClickPayMethod(group: RadioGroup){
@@ -235,7 +262,6 @@ class BuyCertActivity : AppCompatActivity() {
     }
 
     private fun onClickBook(type:Int) {
-        buttonBook = findViewById(R.id.btnBook)
         val etName = findViewById<EditText>(R.id.etName)
         val etPhone = findViewById<EditText>(R.id.etPhone)
         val etEmail = findViewById<EditText>(R.id.etEmail)
@@ -310,13 +336,7 @@ class BuyCertActivity : AppCompatActivity() {
                 deliveryAddress = radioButton.text.toString()
             }
         }
-        val usedCashback: String
-        if(cashBackCharged){
-            usedCashback = availableCashBack.toString()
-        }
-        else{
-            usedCashback = "0"
-        }
+        val usedCashback = if(cashBackCharged) availableCashBack.toString() else "0"
         mapPost["type"] = ordType.toString()
         mapPost["item_id"] = itemId.toString()
         mapPost["city_id"] = cityId.toString()
@@ -328,17 +348,19 @@ class BuyCertActivity : AppCompatActivity() {
         mapPost["comment"] = comment // комментарий
         mapPost["view_id"] = viewId.toString() // шаблон электронного сертификата
         mapPost["view_text"] = etCongratText.text.toString() // текст поздравления
+        mapPost["view_email"] = etRecipientEmailText.string // e-mail получателя
         mapPost["closed"] = "0" // активирован ли сертификат
         mapPost["utm"] = "android"
         mapPost["used_cashback"] = usedCashback
 
-        val connector = ServerConnector(context, AsyncResponse { success,
-                                                                 output -> if (success) doPayment(output, type)
-                                                                            else {
-                                                                                    Toast.makeText(context, output, Toast.LENGTH_LONG).show()
-                                                                                    buttonBook!!.isEnabled = true
-                                                                                }
-                                                                }, true)
+        val connector = ServerConnector(
+            context,
+            { success, output -> when (success) {
+                true -> doPayment(output, type)
+                false -> Toast.makeText(context, output, Toast.LENGTH_LONG).show().run {
+                    buttonBook?.isEnabled = true
+                }
+            } },true)
         connector.execute(mapPost)
     }
 
@@ -381,7 +403,7 @@ class BuyCertActivity : AppCompatActivity() {
                         orderId = ordId.toString()                // ID заказа в вашей системе
                         amount = Money.ofRubles(orderSum.toLong())       // сумма для оплаты
                         title = resources.getString(R.string.payment_coment)+orderId          // название платежа, видимое пользователю
-                        description = "$itemName"    // описание платежа, видимое пользователю
+                        description = itemName    // описание платежа, видимое пользователю
                         recurrentPayment = false            // флаг определяющий является ли платеж рекуррентным [1]
                     }
                     customerOptions {                       // данные покупателя
@@ -550,6 +572,12 @@ class BuyCertActivity : AppCompatActivity() {
                                 viewId = viewIdList[position]
                             }
                         })
+                        imageSlider.setItemClickListener(object : ItemClickListener {
+                            override fun onItemSelected(position: Int) {
+                                startFullImage(imageList.getOrNull(position)?.imageUrl.orEmpty())
+                            }
+
+                        })
                         // ПУНКТЫ САМОВЫВОЗА
                         val pickups = jsonResult.getJSONArray("pickup")
                         val pickupCount: Int = pickups.length()
@@ -559,17 +587,22 @@ class BuyCertActivity : AppCompatActivity() {
                                 val pickup: JSONObject = pickups.getJSONObject(i)
                                 val pickupname = pickup.getString("name")
                                 val pickupid = pickup.getString("id")
+
                                 pickupPriceDelivery.add(pickup.getString("price_delivery").toInt())
-                                val radioButtonView = layoutInflater.inflate(R.layout.radio_button, null, false) as RadioButton
-                                radioButtonView.text = pickupname
-                                radioButtonView.id = pickupid.toInt()
-                                if(i==0){
-                                    radioButtonView.isChecked = true
+
+                                radioButtonView.apply {
+                                    drawablesBottom(R.drawable.ic_line)
+                                    compoundDrawablePadding = 16.dpToPx
+                                    paddingTop(16)
+                                    text = pickupname
+                                    id = pickupid.toInt()
+                                    isChecked = i == 0
+
+                                    radioGroup.addView(this)
                                 }
-                                radioGroup.addView(radioButtonView)
                             }
                         }
-                        radioGroup.setOnCheckedChangeListener { group, checkedId ->
+                        radioGroup.setOnCheckedChangeListener { group, _ ->
                             setPickupPriceDelivery(group)
                         }
                         // ДОСТАВКА
@@ -600,6 +633,13 @@ class BuyCertActivity : AppCompatActivity() {
         connector.execute(mapPost)
     }
 
+    private fun startFullImage(url: String) = Intent(this, FullImageActivity::class.java)
+        .apply {
+            putExtras(Bundle().apply { putString("imgFullUrl", url) })
+            startActivity(this)
+        }
+
+
     private fun getCashBack() {
         val mapPost: HashMap<String, String> = HashMap()
         mapPost["action"] = "cashback"
@@ -622,7 +662,7 @@ class BuyCertActivity : AppCompatActivity() {
                         cashBackTxt.text = cashBackStr
                         if (availableCashBack != 0) {
                             val useCashBackStr = (resources.getString(R.string.cashback_use) + " " + availableCashBack + " " + config.RUB + " "
-                                    + resources.getString(R.string.cashback_use2))  + " (не более" + config.MAX_CASHBACK_PERCENT +"%)";
+                                    + resources.getString(R.string.cashback_use2))  + " (не более " + config.MAX_CASHBACK_PERCENT * 100 +"%)";
                             cashBackChBox.text = useCashBackStr
                         } else {
                             val useCashBackLayout = findViewById<RelativeLayout>(R.id.useCashBackLayout)
@@ -637,7 +677,7 @@ class BuyCertActivity : AppCompatActivity() {
         }, false)
         connector.execute(mapPost)
     }
-
+//Todo
     private fun setCashBack(v: View) {
         var usedCashBack = ""
         if ((v as CheckBox).isChecked) {
@@ -648,7 +688,7 @@ class BuyCertActivity : AppCompatActivity() {
             orderSum += availableCashBack
             cashBackCharged = false
         }
-        val sum = orderSum.toString() + " " + config.RUB
+        val sum = "${orderSum + deliveryOrderPrice} ${config.RUB}"
         val totalPriceTxt = findViewById<TextView>(R.id.total_price)
         val usedCashBackTxt = findViewById<TextView>(R.id.used_cashback)
         val earnCashBackTxt = findViewById<TextView>(R.id.earnCashBack)
@@ -739,6 +779,10 @@ class BuyCertActivity : AppCompatActivity() {
         earnCashBackTxt.text = Html.fromHtml(earnCashBackStr)
     }
 
+    private val radioButtonView get() = layoutInflater
+        .inflate(R.layout.radio_button, null, false) as RadioButton
+
+    @SuppressLint("SetTextI18n")
     private fun setPickupPriceDelivery(group: RadioGroup){
         val selectedId: Int = group.checkedRadioButtonId
         val radioButton = findViewById<RadioButton>(selectedId)
@@ -746,7 +790,7 @@ class BuyCertActivity : AppCompatActivity() {
         deliveryOrderPrice = if(orderSum < orderPricePickupPay) pickupPriceDelivery[index] else 0
         val delPriceTV = findViewById<TextView>(R.id.delivery_price)
         val totalPriceTV = findViewById<TextView>(R.id.total_price)
-        delPriceTV.text = deliveryOrderPrice.toString() + " " + config.RUB
-        totalPriceTV.text = (orderSum+deliveryOrderPrice).toString() + " " + config.RUB
+        delPriceTV.text = "$deliveryOrderPrice ${config.RUB}"
+        totalPriceTV.text = "${orderSum + deliveryOrderPrice} ${config.RUB}"
     }
 }

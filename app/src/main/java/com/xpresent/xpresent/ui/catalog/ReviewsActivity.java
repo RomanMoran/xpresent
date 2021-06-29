@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.common.util.CollectionUtils;
 import com.google.android.material.button.MaterialButton;
 import com.xpresent.xpresent.R;
 import com.xpresent.xpresent.adapter.OfferAdapter;
@@ -36,6 +37,7 @@ import com.xpresent.xpresent.config.config;
 import com.xpresent.xpresent.model.Item;
 import com.xpresent.xpresent.requests.ServerConnector;
 import com.xpresent.xpresent.ui.booking.CalendarActivity;
+import com.xpresent.xpresent.util.UtilKt;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,6 +48,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TimeZone;
+
+import kotlin.collections.CollectionsKt;
 
 
 public class ReviewsActivity extends AppCompatActivity {
@@ -95,14 +100,9 @@ public class ReviewsActivity extends AppCompatActivity {
         mapPost.put("id", Integer.toString(impressionId));
         mapPost.put("city", Integer.toString(cityId));
 
-        ServerConnector Connector = new ServerConnector(Activity, new ServerConnector.AsyncResponse() {
-            @Override
-            public void processFinish(boolean success, String output) {
-                if(success) {
-                    showResult(output);
-                }
-                else Toast.makeText(Activity, getResources().getString(R.string.no_server_connection), Toast.LENGTH_LONG).show();
-            }
+        ServerConnector Connector = new ServerConnector(Activity, (success, output) -> {
+            if(success) showResult(output);
+            else Toast.makeText(Activity, getResources().getString(R.string.no_server_connection), Toast.LENGTH_LONG).show();
         }, true);
         Connector.execute(mapPost);
     }
@@ -144,6 +144,11 @@ public class ReviewsActivity extends AppCompatActivity {
                             reviewList.add(item);
                         //}
                     }
+                    CollectionsKt.sortBy(reviewList, it -> UtilKt
+                            .toCalendar(it.getParam("date_insert"), "yyyy-MM-dd hh:mm:ss")
+                            .getTimeInMillis()
+                    );
+                    CollectionsKt.reverse(reviewList);
                     reviewAdapter.notifyDataSetChanged();
                 }
                 else{

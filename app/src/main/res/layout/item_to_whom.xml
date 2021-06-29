@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xpresent.xpresent.custom_view.SelectorButton
+        android:id="@+id/selectorButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+    </com.xpresent.xpresent.custom_view.SelectorButton>
+
+    <EditText
+        android:id="@+id/etRecipientEmailText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/editTextUnderline"
+        android:drawableEnd="@drawable/ic_commercial_at"
+        android:drawablePadding="6dp"
+        android:hint="@string/recipient_email"
+        android:maxLength="200"
+        android:paddingBottom="20dp"
+        android:textAppearance="@style/TextAppearance.EditText"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/hintRecipientEmailText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/avenirnextcyr_regular"
+        android:text="@string/hnt_recipien_email"
+        android:textColor="@color/colorPrimaryVariant"
+        android:textSize="12sp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/etCommentsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/editTextUnderline"
+        android:hint="@string/comment"
+        android:maxLength="200"
+        android:paddingBottom="20dp"
+        android:textAppearance="@style/TextAppearance.EditText" />
+</LinearLayout>

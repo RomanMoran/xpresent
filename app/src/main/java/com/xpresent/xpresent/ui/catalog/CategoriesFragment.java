@@ -48,16 +48,7 @@ public class CategoriesFragment extends Fragment implements SelectedItem {
         citiesTxt.setText(cityName);
 
         // City is clicked
-        citiesTxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CitiesFragment citiesFragment = new CitiesFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, citiesFragment).addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
+        citiesTxt.setOnClickListener(v -> startFragment(new CitiesFragment()));
         RecyclerView categoriesRecycler = view.findViewById(R.id.categories_list);
         categoriesRecycler.setLayoutManager(new LinearLayoutManager(Activity));
 
@@ -83,17 +74,16 @@ public class CategoriesFragment extends Fragment implements SelectedItem {
 
         // search
         RelativeLayout searchBtn = view.findViewById(R.id.searchBlock);
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SearchFragment searchFragment = new SearchFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, searchFragment).addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
+        searchBtn.setOnClickListener(v -> startFragment(new SearchFragment()));
         return view;
+    }
+
+    private void startFragment(Fragment fragment) {
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     private void showResult(String result){

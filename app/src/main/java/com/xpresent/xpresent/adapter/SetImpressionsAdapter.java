@@ -69,13 +69,13 @@ public class SetImpressionsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 viewHolder.dNameTV.setText(item.getParam("duration_name"));
             }
             else{
-                viewHolder.dnameBlock.setVisibility(View.GONE);
+                viewHolder.dNameTV.setVisibility(View.GONE);
             }
             if(!item.getParam("human_name").equals("")) {
                 viewHolder.hNameTV.setText(item.getParam("human_name"));
             }
             else{
-                viewHolder.hnameBlock.setVisibility(View.GONE);
+                viewHolder.hNameTV.setVisibility(View.GONE);
             }
             Glide.with(viewHolder.itemView)
                     .load(config.HOST_NAME+item.getParam("img"))
@@ -102,8 +102,6 @@ public class SetImpressionsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         ImageView impressionImage;
         TextView dNameTV;
         TextView hNameTV;
-        RelativeLayout dnameBlock;
-        RelativeLayout hnameBlock;
 
         ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -112,8 +110,6 @@ public class SetImpressionsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             descriptionTV = itemView.findViewById(R.id.tv_description);
             dNameTV = itemView.findViewById(R.id.dNameTV);
             hNameTV = itemView.findViewById(R.id.hNameTV);
-            dnameBlock = itemView.findViewById(R.id.dnameBlock);
-            hnameBlock = itemView.findViewById(R.id.hnameBlock);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

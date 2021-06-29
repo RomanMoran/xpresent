@@ -49,12 +49,7 @@ public class CitiesFragment extends Fragment{
         TextView toolbarTitle = view.findViewById(R.id.Title);
         toolbarTitle.setText(res.getString(R.string.choose_city));
         ImageView backBtn = view.findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().onBackPressed();
-            }
-        });
+        backBtn.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         ListView citiesList = view.findViewById(R.id.citiesList);
 
@@ -67,12 +62,7 @@ public class CitiesFragment extends Fragment{
         citiesList.setAdapter(cityAdapter);
 
         // List view is clicked
-        citiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-                selectCity(position);
-            }
-        });
+        citiesList.setOnItemClickListener((parent, itemClicked, position, id) -> selectCity(position));
         return view;
     }
 
@@ -84,11 +74,15 @@ public class CitiesFragment extends Fragment{
         editor.putInt("cityId",city.getId());
         editor.putString("cityName",city.getName());
         editor.apply();
-        CategoriesFragment categoriesFragment = new CategoriesFragment();
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment, categoriesFragment).addToBackStack(null);
-        fragmentTransaction.commit();
+        startFragment();
+    }
+
+    private void startFragment() {
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment, new CategoriesFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
 }

@@ -10,11 +10,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/set_impressions_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_set_item_impression"
-                android:paddingBottom="@dimen/margin_medium"/>
+                android:paddingBottom="@dimen/margin_medium"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_set_item_impression" />
         </RelativeLayout>
     </LinearLayout>

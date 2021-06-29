@@ -26,6 +26,8 @@ import com.xpresent.xpresent.model.Item;
 
 import java.util.List;
 
+import static android.view.View.*;
+
 public class SetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private final int VIEW_TYPE_ITEM=0, VIEW_TYPE_LOADING=1;
     private LoadMoreInterface loadMoreInterface;
@@ -90,12 +92,8 @@ public class SetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             viewHolder.priceTV.setText(price);
             String oldPrice = item.getParam("old_price");
             String oldPrc = oldPrice.equals("0") ? "" : config.RUB + " " + oldPrice;
-            if(!oldPrice.equals("0")) {
-                viewHolder.oldPriceTV.setText(oldPrc);
-            }
-            else{
-                viewHolder.oldPriceTV.setVisibility(View.GONE);
-            }
+            viewHolder.oldPriceTV.setVisibility(!oldPrice.equals("0") ? VISIBLE : INVISIBLE);
+            viewHolder.oldPriceTV.setText(oldPrc);
             String impressionCount = item.getParam("impression_count");
             viewHolder.impressionCountTV.setText("Впечатлений: "+impressionCount);
 
@@ -112,10 +110,10 @@ public class SetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 int color= Utility.getTagColor(tagColor);
                 viewHolder.tag.setChipBackgroundColorResource(color);
                 viewHolder.tag.setText(tagName);
-                viewHolder.tag.setVisibility(View.VISIBLE);
+                viewHolder.tag.setVisibility(VISIBLE);
             }
             else{
-                viewHolder.tag.setVisibility(View.GONE);
+                viewHolder.tag.setVisibility(GONE);
             }
         }
         else if(holder instanceof LoadingViewHolder){
@@ -151,12 +149,7 @@ public class SetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             oldPriceTV = itemView.findViewById(R.id.tv_old_price);
             impressionCountTV = itemView.findViewById(R.id.tv_impression_count);
             tag = itemView.findViewById(R.id.tag);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    selectedItem.selectedItem(items.get(getAdapterPosition()));
-                }
-            });
+            itemView.setOnClickListener(v -> selectedItem.selectedItem(items.get(getAdapterPosition())));
         }
 
         ImageView getImpressionImageView(){

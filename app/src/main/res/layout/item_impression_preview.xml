@@ -36,35 +36,32 @@
 
         <TextView
             android:id="@+id/impressionName"
-            android:layout_marginTop="18dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Title"
             android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="18dp"
             android:layout_marginEnd="@dimen/default_margin"
-            />
+            android:textAppearance="@style/TextAppearance.Title" />
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_marginTop="@dimen/margin_mini"
-            android:layout_marginStart="@dimen/default_margin"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Card"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/margin_mini"
+            android:layout_marginEnd="@dimen/default_margin"
             android:maxLines="4"
-            />
+            android:textAppearance="@style/TextAppearance.Card" />
 
         <TextView
             android:id="@+id/tv_old_price"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginStart="@dimen/default_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:foreground="@drawable/crossed_text"
-            android:textAppearance="@style/TextAppearance.Card.Price.CrossOut"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             android:alpha="0.5"
-            />
+            android:foreground="@drawable/crossed_text"
+            android:textAppearance="@style/TextAppearance.Card.Price.CrossOut" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

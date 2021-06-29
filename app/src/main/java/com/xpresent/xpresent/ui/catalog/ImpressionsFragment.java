@@ -75,12 +75,7 @@ public class ImpressionsFragment extends Fragment implements SelectedItem {
         catNameTV = view.findViewById(R.id.title);
         catNameTV.setText(categoryName);
         ImageView backBtn = view.findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().onBackPressed();
-            }
-        });
+        backBtn.setOnClickListener(v -> getActivity().onBackPressed());
         // get city from storage
         SharedPreferences settings = Activity.getSharedPreferences("xp_client", Context.MODE_PRIVATE);
         cityId = settings.getInt("cityId", 1);
@@ -107,15 +102,12 @@ public class ImpressionsFragment extends Fragment implements SelectedItem {
 
         // search
         RelativeLayout searchBtn = view.findViewById(R.id.searchBlock);
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SearchFragment searchFragment = new SearchFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, searchFragment).addToBackStack(null);
-                fragmentTransaction.commit();
-            }
+        searchBtn.setOnClickListener(v -> {
+            SearchFragment searchFragment = new SearchFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.nav_host_fragment, searchFragment).addToBackStack(null);
+            fragmentTransaction.commit();
         });
 
         final Chip orderByPrice = view.findViewById(R.id.orderByPrice);

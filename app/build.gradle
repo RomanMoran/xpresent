@@ -10,8 +10,8 @@ android {
         applicationId "com.xpresent.xpresent"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 13
-        versionName "1.1.7"
+        versionCode 14
+        versionName "1.1.8"
     }
 
     buildTypes {
@@ -27,6 +27,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions { jvmTarget = JavaVersion.VERSION_1_8.toString() }
 
 }
 
@@ -58,4 +64,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.github.kizitonwose:CalendarView:0.3.5'
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 }

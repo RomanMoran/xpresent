@@ -1,129 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="@dimen/default_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_mini"
-    android:layout_marginEnd="@dimen/margin_mini"
-    android:layout_height="wrap_content">
+    android:layout_marginTop="@dimen/default_margin"
+    android:layout_marginEnd="@dimen/margin_mini">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/imageBlock"
+        <ImageView
+            android:id="@+id/impressionImg"
             android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tag"
+            style="@style/AppTheme.Chip.Card.Recommended"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:background="#E6E6E6">
-
-            <ImageView
-                android:id="@+id/impressionImg"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/tag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/AppTheme.Chip.Card.Recommended"
-                android:visibility="gone"
-                android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginStart="@dimen/default_margin"
-                />
-        </RelativeLayout>
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/impressionImg"
+            app:layout_constraintTop_toTopOf="@+id/impressionImg" />
 
         <TextView
             android:id="@+id/impressionName"
-            android:layout_below="@+id/imageBlock"
-            android:layout_marginTop="18dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Title"
             android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             android:layout_marginEnd="@dimen/default_margin"
-            />
+            android:textAppearance="@style/TextAppearance.Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/impressionImg" />
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_below="@+id/impressionName"
-            android:layout_marginTop="@dimen/margin_mini"
-            android:layout_marginStart="@dimen/default_margin"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Card"
+            android:layout_below="@+id/impressionName"
+            android:layout_marginTop="@dimen/default_margin"
             android:maxLines="3"
-            />
+            android:textAppearance="@style/TextAppearance.Card"
+            app:layout_constraintEnd_toEndOf="@+id/impressionName"
+            app:layout_constraintStart_toStartOf="@+id/impressionName"
+            app:layout_constraintTop_toBottomOf="@+id/impressionName" />
+
         <ImageView
             android:id="@+id/line"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="2dp"
-            android:layout_below="@+id/tv_description"
-            android:layout_margin="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
             android:alpha="0.25"
-            android:src="@drawable/stroke_drawable"/>
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:src="@drawable/stroke_drawable"
+            app:layout_constraintBottom_toTopOf="@+id/dNameTV"
+            app:layout_constraintEnd_toEndOf="@+id/dNameTV"
+            app:layout_constraintStart_toStartOf="@+id/dNameTV"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/dNameTV"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/line"
-            android:orientation="vertical"
-            android:gravity="bottom"
-            android:paddingStart="@dimen/default_padding"
-            android:paddingEnd="@dimen/default_padding"
-            android:paddingBottom="@dimen/default_padding">
-            <RelativeLayout
-                android:id="@+id/dnameBlock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:layout_marginBottom="@dimen/default_margin"
+            android:drawablePadding="@dimen/margin_mini"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.Card"
+            app:drawableStartCompat="@drawable/ic_date_range_16dp"
+            app:layout_constraintBottom_toTopOf="@+id/hNameTV"
+            app:layout_constraintEnd_toEndOf="@+id/hNameTV"
+            app:layout_constraintStart_toStartOf="@+id/hNameTV" />
 
-                <ImageView
-                    android:id="@+id/iv_icon3"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/ic_date_range_16dp" />
+        <TextView
+            android:id="@+id/hNameTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:drawablePadding="@dimen/margin_mini"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.Card"
+            app:drawableStartCompat="@drawable/ic_person_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_description"
+            app:layout_constraintStart_toStartOf="@+id/tv_description" />
 
-                <TextView
-                    android:id="@+id/dNameTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin_mini"
-                    android:layout_toEndOf="@id/iv_icon3"
-                    android:textAppearance="@style/TextAppearance.Card" />
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/hnameBlock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_mini"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iv_icon1"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/ic_person" />
-
-                <TextView
-                    android:id="@+id/hNameTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin_mini"
-                    android:layout_toEndOf="@id/iv_icon1"
-                    android:textAppearance="@style/TextAppearance.Card" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

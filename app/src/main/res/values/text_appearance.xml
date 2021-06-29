@@ -28,6 +28,10 @@
         <item name="android:textColorLink">@color/acq_colorButton</item>
     </style>
 
+    <style name="TextAppearance.TextInputLayout">
+        <item name="boxStrokeColor">#fff</item>
+    </style>
+
     <style name="TextAppearance.Card.Surface">
         <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>

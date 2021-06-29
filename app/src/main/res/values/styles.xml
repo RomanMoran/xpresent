@@ -145,4 +145,11 @@
         <item name="android:textColor">@color/colorOnSurface</item>
         <item name="android:paddingStart">@dimen/margin_medium</item>
     </style>
+
+    <style name="Test" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:padding">2dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+
+    </style>
 </resources>
