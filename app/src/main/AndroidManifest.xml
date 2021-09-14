@@ -14,7 +14,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".ui.catalog.FullImageActivity"></activity>
+        <activity
+            android:name=".ui.certificates.ActivateActivity"
+            android:exported="true" />
+        <activity android:name=".ui.catalog.FullImageActivity" />
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -43,7 +46,9 @@
         <activity android:name=".ui.booking.BuyCertActivity" />
         <activity android:name=".ui.booking.CalendarActivity" />
         <activity android:name=".ui.booking.BookActivity" />
-        <activity android:name=".ui.catalog.ImpressionActivity" android:launchMode = "singleTop"/>
+        <activity
+            android:name=".ui.catalog.ImpressionActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".ui.catalog.ReviewsActivity" />
         <activity android:name=".ui.CitySelectedActivity" />
         <activity

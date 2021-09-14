@@ -19,85 +19,84 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/fragment_sets_scene">
+
         <HorizontalScrollView
             android:id="@+id/scrollFilter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none"
-            app:layout_constraintTop_toBottomOf="@id/include"
-            >
-        <LinearLayout
-            android:id="@+id/ll_chips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            app:layout_constraintTop_toBottomOf="@id/include">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/orderByMale"
+            <LinearLayout
+                android:id="@+id/ll_chips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/default_margin"
-                android:text="Мужчине"
-                style="@style/AppTheme.Chip"
-                app:textStartPadding="0dp"
-                android:textAlignment="center"
-                />
+                android:orientation="horizontal">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/orderByFeMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginStart="@dimen/margin_mini"
-                android:layout_marginTop="@dimen/default_margin"
-                android:text="Женщине"
-                style="@style/AppTheme.Chip"
-                app:textStartPadding="0dp"
-                android:textAlignment="center"
-                />
-            <com.google.android.material.chip.Chip
-                android:id="@+id/orderByCouple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginStart="@dimen/margin_mini"
-                android:layout_marginTop="@dimen/default_margin"
-                android:text="Для двоих"
-                style="@style/AppTheme.Chip"
-                app:textStartPadding="0dp"
-                android:textAlignment="center"
-                />
-            <com.google.android.material.chip.Chip
-                android:id="@+id/orderByChild"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checkable="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginStart="@dimen/margin_mini"
-                android:layout_marginEnd="@dimen/margin_mini"
-                android:layout_marginTop="@dimen/default_margin"
-                android:text="Ребенку"
-                style="@style/AppTheme.Chip"
-                app:textStartPadding="0dp"
-                android:textAlignment="center"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/orderByMale"
+                    style="@style/AppTheme.Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_weight="1"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="Мужчине"
+                    android:textAlignment="center"
+                    app:textStartPadding="0dp" />
 
-                />
-        </LinearLayout>
-    </HorizontalScrollView>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/orderByFeMale"
+                    style="@style/AppTheme.Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_weight="1"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="Женщине"
+                    android:textAlignment="center"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/orderByCouple"
+                    style="@style/AppTheme.Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_weight="1"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="Для двоих"
+                    android:textAlignment="center"
+                    app:textStartPadding="0dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/orderByChild"
+                    style="@style/AppTheme.Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/margin_mini"
+                    android:layout_weight="1"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="Ребенку"
+                    android:textAlignment="center"
+                    app:textStartPadding="0dp"
+
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
         <TextView
             android:id="@+id/noSets"
             android:layout_width="match_parent"
@@ -109,16 +108,16 @@
             app:layout_constraintTop_toBottomOf="@id/scrollFilter"
             android:text="@string/no_sets"
             android:textAppearance="@style/TextAppearance.Card" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/setsRecycleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipToPadding="false"
             android:paddingStart="@dimen/padding_mini"
             android:paddingEnd="@dimen/padding_mini"
-            app:layout_constraintTop_toBottomOf="@id/scrollFilter"
-            android:clipToPadding="false"
             android:paddingBottom="@dimen/recycler_bottom_padding"
-            tools:listitem="@layout/item_set_preview">
-        </androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@id/scrollFilter"
+            tools:listitem="@layout/item_set_preview"/>
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </androidx.appcompat.widget.LinearLayoutCompat >

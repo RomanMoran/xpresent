@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "616361418665",
+    "firebase_url": "https://xpresent-b3568.firebaseio.com",
+    "project_id": "xpresent-b3568",
+    "storage_bucket": "xpresent-b3568.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616361418665:android:cc0f7467721c7db85e2eb8",
+        "android_client_info": {
+          "package_name": "com.xpresent.xpresent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616361418665-bafqfcfjplo1ii9vc2ec9vnmkit4r1be.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xpresent.xpresent",
+            "certificate_hash": "d538eb6914545234dd9acd65836ada181d88407c"
+          }
+        },
+        {
+          "client_id": "616361418665-aj5u4ca038eqlkt1hmcav6vvffulcnnl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1FJHN__uIRx8mdGTj79tFwfzoY8Dm4v8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616361418665-aj5u4ca038eqlkt1hmcav6vvffulcnnl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

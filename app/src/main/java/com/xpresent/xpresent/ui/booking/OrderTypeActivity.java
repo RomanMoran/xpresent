@@ -55,13 +55,13 @@ public class OrderTypeActivity extends AppCompatActivity {
             }
         });
 
-        MaterialButton bookBtn = findViewById(R.id.bookBtn);
+        /*MaterialButton bookBtn = findViewById(R.id.bookBtn);
         bookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 }

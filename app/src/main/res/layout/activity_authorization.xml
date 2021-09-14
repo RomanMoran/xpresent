@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <androidx.cardview.widget.CardView
+    <!--<androidx.cardview.widget.CardView
         android:id="@+id/btnSignInVK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 android:layout_centerVertical="true"
                 app:srcCompat="@drawable/ic_arrow_forvard" />
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>-->
     <androidx.cardview.widget.CardView
         android:id="@+id/btnSignInByPhone"
         android:layout_marginTop="@dimen/margin_medium"
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin"
         android:layout_marginEnd="@dimen/default_margin"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignInVK">
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <RelativeLayout
             android:layout_width="match_parent"

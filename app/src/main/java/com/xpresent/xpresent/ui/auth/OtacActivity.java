@@ -28,7 +28,7 @@ import java.util.HashMap;
 import static com.xpresent.xpresent.lib.Utility.sha512;
 
 public class OtacActivity extends AppCompatActivity {
-    private String sessionKey = "", clientPhone, clientEmail, clientName, redirect;
+    private String sessionKey = "", code = "", clientPhone, clientEmail, clientName, redirect;
     private EditText smsCodeET;
 
     @Override
@@ -49,6 +49,7 @@ public class OtacActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         sessionKey = extras.getString("sessionKey");
+        code = extras.getString("code");
         clientPhone = extras.getString("clientPhone");
         clientEmail = extras.getString("clientEmail");
         clientName = extras.getString("clientName");
@@ -78,10 +79,10 @@ public class OtacActivity extends AppCompatActivity {
 
     private void onClickAuth() {
         String smsCode = smsCodeET.getText().toString();
-        String pass = config.PASSWORD_APP;
-        String hash = sha512(smsCode+pass);
-        // if SMS hash code equals hash from server
-        if(hash.equals(sessionKey)){
+        //String pass = config.PASSWORD_APP;
+        //String hash = sha512(smsCode+pass);
+        // if SMS code equals code from server
+        if(smsCode.equals(code)){
             // record sessionKey to storage
             SharedPreferences settings = getSharedPreferences("xp_client", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();

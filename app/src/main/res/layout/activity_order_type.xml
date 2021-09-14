@@ -88,7 +88,7 @@
                         />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
+            <!--<androidx.cardview.widget.CardView
                 android:id="@+id/bookCard"
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_width="match_parent"
@@ -146,7 +146,7 @@
                         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                         />
                 </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>-->
         </LinearLayout>
         </ScrollView>
 </RelativeLayout>

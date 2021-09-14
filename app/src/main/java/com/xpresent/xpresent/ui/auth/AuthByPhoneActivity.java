@@ -87,6 +87,7 @@ public class AuthByPhoneActivity extends AppCompatActivity {
             clientPhone = phoneCode+phone;
             HashMap<String,String> mapPost = new HashMap<>();
             mapPost.put("action", "auth");
+            mapPost.put("type", "auth_by_phone");
             mapPost.put("phone", clientPhone);
 
             ServerConnector Connector = new ServerConnector(Activity, new ServerConnector.AsyncResponse() {
@@ -108,12 +109,14 @@ public class AuthByPhoneActivity extends AppCompatActivity {
             boolean status = jsonResult.getBoolean("status");
             if (status) {
                 String sessionKey = jsonResult.getString("key");
+                String code = jsonResult.getString("code");
                 String email = jsonResult.getString("email");
                 String name = jsonResult.getString("name");
 
                 Bundle extras = new Bundle();
                 extras.putString("type", "phone");
                 extras.putString("sessionKey", sessionKey);
+                extras.putString("code", code);
                 extras.putString("clientPhone", clientPhone);
                 extras.putString("clientName", name);
                 extras.putString("clientEmail", email);

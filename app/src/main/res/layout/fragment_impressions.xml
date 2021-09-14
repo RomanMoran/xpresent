@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@layout/scene_impressions">
+
         <LinearLayout
             android:id="@+id/ll_chips"
             android:layout_width="match_parent"
@@ -28,27 +29,26 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/orderByRating"
+                style="@style/AppTheme.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/default_margin"
-                app:chipIcon="@drawable/ic_sort"
-                android:text="@string/action_sort_popularity"
                 android:checkable="true"
                 android:checked="true"
-                style="@style/AppTheme.Chip"
-                />
+                android:text="@string/action_sort_popularity"
+                app:chipIcon="@drawable/ic_sort" />
+
             <com.google.android.material.chip.Chip
                 android:id="@+id/orderByPrice"
+                style="@style/AppTheme.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_margin"
-                app:chipIcon="@drawable/ic_sort"
-                android:text="@string/action_sort_cost"
                 android:checkable="true"
-                style="@style/AppTheme.Chip"
-                />
+                android:text="@string/action_sort_cost"
+                app:chipIcon="@drawable/ic_sort" />
         </LinearLayout>
 
         <TextView

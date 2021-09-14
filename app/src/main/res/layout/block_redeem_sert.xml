@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/default_margin"
+    android:layout_marginStart="@dimen/default_margin"
+    android:layout_marginEnd="@dimen/default_margin"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_padding"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Активировать сертификат"
+            android:textAppearance="@style/TextAppearance.Title" />
+
+        <EditText
+            android:id="@+id/etSert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:ems="10"
+            android:hint="Номер сертификата"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.Card"/>
+
+        <EditText
+            android:id="@+id/etSecNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:ems="10"
+            android:hint="Секретный код"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.Card"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_redeem"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/default_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Найти сертификат"
+
+            android:minHeight="0dp"
+            android:insetBottom="0dp"
+            android:insetTop="0dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            app:cornerRadius="22dp"
+            android:textAppearance="@style/TextAppearance.Button.Surface"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

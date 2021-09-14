@@ -19,12 +19,14 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.xpresent.xpresent.R;
 import com.xpresent.xpresent.adapter.OrdersListAdapter;
 import com.xpresent.xpresent.adapter.SelectedItem;
 import com.xpresent.xpresent.model.Item;
 import com.xpresent.xpresent.requests.ServerConnector;
 import com.xpresent.xpresent.ui.auth.AuthorizationActivity;
+import com.xpresent.xpresent.ui.booking.BuyCertActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,6 +78,17 @@ public class CertificatesFragment extends Fragment  implements SelectedItem {
                 getOrders();
             }
         }
+        /*MaterialButton activateButton = view.findViewById(R.id.btnActivate);
+        activateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //check authorization
+                if (!sessionKey.isEmpty()) {
+                    Intent intent = new Intent(Activity, ActivateActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });*/
         return view;
     }
 

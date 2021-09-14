@@ -42,12 +42,12 @@ public class AuthorizationActivity extends AppCompatActivity {
             }
         });
 
-        CardView buttonVKAuth = findViewById(R.id.btnSignInVK);
+        /*CardView buttonVKAuth = findViewById(R.id.btnSignInVK);
         buttonVKAuth.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onClickSingInByVK();
             }
-        });
+        });*/
     }
 
     public void onClickSingInByPhone(){

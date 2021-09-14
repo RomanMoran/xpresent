@@ -16,6 +16,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.wallet.WalletConstants
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.xpresent.xpresent.R
 import com.xpresent.xpresent.config.config
 import com.xpresent.xpresent.requests.ServerConnector
@@ -323,6 +324,21 @@ class BookActivity : AppCompatActivity() {
         val extras = Bundle()
         extras.putInt("paymentId", 2)
         extras.putInt("orderId", ordId)
+
+        // Purchase in Firebase Analytics
+        var mFirebaseAnalytics: FirebaseAnalytics? = null
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.VALUE, orderSum.toString())
+        bundle.putString(FirebaseAnalytics.Param.CURRENCY, "RUB")
+        bundle.putString(FirebaseAnalytics.Param.TRANSACTION_ID, ordId.toString())
+        /*val item1 = Bundle()
+        item1.putString(FirebaseAnalytics.Param.ITEM_NAME, "Полет на самолете")
+        item1.putString(FirebaseAnalytics.Param.ITEM_ID, "599")
+        item1.putString(FirebaseAnalytics.Param.ITEM_CATEGORY, "Полеты")
+        bundle.putParcelableArray(FirebaseAnalytics.Param.ITEMS, arrayOf(item1))*/
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.PURCHASE, bundle)
+
         val intent = Intent(this, PaymentResultActivity::class.java)
         intent.putExtras(extras)
         startActivity(intent)
