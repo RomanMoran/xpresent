@@ -7,6 +7,7 @@
 package com.xpresent.xpresent.ui.catalog;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,6 +34,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.chip.Chip;
+import com.jivosite.sdk.ui.chat.JivoChatFragment;
 import com.xpresent.xpresent.R;
 import com.xpresent.xpresent.adapter.OfferAdapter;
 import com.xpresent.xpresent.adapter.ReviewAdapter;

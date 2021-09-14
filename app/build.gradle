@@ -11,8 +11,8 @@ android {
         applicationId "com.xpresent.xpresent"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 14
-        versionName "1.1.8"
+        versionCode 15
+        versionName "1.1.9"
     }
 
     buildTypes {
@@ -67,7 +67,10 @@ dependencies {
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
-
+    //JivoSDK
+    implementation 'com.jivosite.sdk:android-sdk:1.0.0-alpha17'
+    //firebase
     implementation platform('com.google.firebase:firebase-bom:28.4.0')
+    implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-analytics'
 }

@@ -159,4 +159,7 @@
     <string name="recipient_email">E-mail получателя</string>
     <string name="comment">Комментарий</string>
 
+    <string name="jivo_title">Есть вопросы? Напишите нам</string>
+    <string name="jivo_subtitle">С радостью ответим вам</string>
+    <string name="jivo_welcome">Специалисты по впечатлениям Xpresent готовы ответить на ваши вопросы</string>
 </resources>

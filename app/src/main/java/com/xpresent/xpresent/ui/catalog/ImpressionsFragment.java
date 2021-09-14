@@ -141,6 +141,9 @@ public class ImpressionsFragment extends Fragment implements SelectedItem {
             }
         });
 
+        // Jivo chat
+
+
         return view;
     }
 
