@@ -23,8 +23,8 @@ class App : Application() {
 
         Jivo.setConfig(
             Config.Builder()
-                //.setLogo(R.drawable.vic_jivosdk_logo)
-                //.setBackground(R.drawable.bg_jivosdk_appbar)
+                .setLogo(R.drawable.logo)
+                .setBackground(R.drawable.placeholder_bg)
                 .setTitle(R.string.jivo_title)
                 .setTitleTextColor(R.color.white)
                 .setSubtitle(R.string.jivo_subtitle)

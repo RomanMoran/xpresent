@@ -52,6 +52,7 @@
             android:launchMode="singleTop" />
         <activity android:name=".ui.catalog.ReviewsActivity" />
         <activity android:name=".ui.CitySelectedActivity" />
+        <activity android:name=".ui.catalog.JivoChatActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />

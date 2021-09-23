@@ -27,7 +27,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.Chip;
+import com.jivosite.sdk.ui.chat.JivoChatFragment;
 import com.xpresent.xpresent.R;
 import com.xpresent.xpresent.adapter.ImpressionsAdapter;
 import com.xpresent.xpresent.adapter.SelectedItem;
@@ -142,7 +144,14 @@ public class ImpressionsFragment extends Fragment implements SelectedItem {
         });
 
         // Jivo chat
-
+        View jivoView = view.findViewById(R.id.jivoBtn);
+        jivoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), JivoChatActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

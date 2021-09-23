@@ -119,5 +119,12 @@
             android:paddingBottom="@dimen/recycler_bottom_padding"
             app:layout_constraintTop_toBottomOf="@id/scrollFilter"
             tools:listitem="@layout/item_set_preview"/>
+        <com.jivosite.sdk.ui.views.JivoChatButton
+            android:id="@+id/jivoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </androidx.appcompat.widget.LinearLayoutCompat >

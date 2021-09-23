@@ -371,6 +371,21 @@ class BuyCertActivity : AppCompatActivity() {
             val status = jsonResult.getBoolean("status")
             if (status) {
                 ordId = jsonResult.getInt("order_id")
+                // Purchase in Firebase Analytics
+                var mFirebaseAnalytics: FirebaseAnalytics? = null
+                mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+                val bundle = Bundle()
+                //bundle.putString(FirebaseAnalytics.Param.VALUE, orderSum.toString())
+                bundle.putDouble(FirebaseAnalytics.Param.VALUE, orderSum.toDouble());
+                bundle.putString(FirebaseAnalytics.Param.CURRENCY, "RUB")
+                bundle.putString(FirebaseAnalytics.Param.TRANSACTION_ID, ordId.toString())
+                /*val item1 = Bundle()
+                item1.putString(FirebaseAnalytics.Param.ITEM_NAME, "Полет на самолете")
+                item1.putString(FirebaseAnalytics.Param.ITEM_ID, "599")
+                item1.putString(FirebaseAnalytics.Param.ITEM_CATEGORY, "Полеты")
+                bundle.putParcelableArray(FirebaseAnalytics.Param.ITEMS, arrayOf(item1))*/
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.PURCHASE, bundle)
+
                 if (cashBackCharged) {
                     cashBack -= availableCashBack
                 }
@@ -497,21 +512,6 @@ class BuyCertActivity : AppCompatActivity() {
 
     private fun successActivity(){
         val extras = Bundle()
-
-        // Purchase in Firebase Analytics
-        var mFirebaseAnalytics: FirebaseAnalytics? = null
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
-        val bundle = Bundle()
-        bundle.putString(FirebaseAnalytics.Param.VALUE, orderSum.toString())
-        bundle.putString(FirebaseAnalytics.Param.CURRENCY, "RUB")
-        bundle.putString(FirebaseAnalytics.Param.TRANSACTION_ID, ordId.toString())
-        /*val item1 = Bundle()
-        item1.putString(FirebaseAnalytics.Param.ITEM_NAME, "Полет на самолете")
-        item1.putString(FirebaseAnalytics.Param.ITEM_ID, "599")
-        item1.putString(FirebaseAnalytics.Param.ITEM_CATEGORY, "Полеты")
-        bundle.putParcelableArray(FirebaseAnalytics.Param.ITEMS, arrayOf(item1))*/
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.PURCHASE, bundle)
-
         extras.putInt("paymentId", paymentId)
         extras.putInt("orderId", ordId)
         val intent = Intent(this, PaymentResultActivity::class.java)

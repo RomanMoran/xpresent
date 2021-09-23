@@ -133,6 +133,16 @@ public class SetActivity extends AppCompatActivity implements SelectedItem {
                 onClickBook(v);
             }
         });
+
+        // Jivo chat
+        View jivoView = findViewById(R.id.jivoBtn);
+        jivoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity, JivoChatActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void getSetItem(){

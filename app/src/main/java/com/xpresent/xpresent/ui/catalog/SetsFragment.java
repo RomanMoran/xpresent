@@ -145,6 +145,16 @@ public class SetsFragment extends Fragment implements SelectedItem {
             orderByMale.setChecked(false);
         });
 
+        // Jivo chat
+        View jivoView = view.findViewById(R.id.jivoBtn);
+        jivoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), JivoChatActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
