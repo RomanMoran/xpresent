@@ -34,6 +34,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.chip.Chip;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.jivosite.sdk.ui.chat.JivoChatFragment;
 import com.xpresent.xpresent.R;
 import com.xpresent.xpresent.adapter.OfferAdapter;
@@ -117,6 +118,12 @@ public class ImpressionActivity extends AppCompatActivity implements SelectedIte
                 // add to favorite list
                 if(((MaterialCheckBox) v).isChecked()){
                     favoriteSet.add(Integer.toString(firstOfferId));
+                    // ADD_TO_WISHLIST  in Firebase Analytics
+                    Bundle bundle = new Bundle();
+                    bundle.putDouble(FirebaseAnalytics.Param.VALUE, orderSum);
+                    bundle.putString(FirebaseAnalytics.Param.CURRENCY, "RUB");
+                    addFirebaseEvent(FirebaseAnalytics.Event.ADD_TO_WISHLIST, bundle);
+
                 } // remove from favorite list
                 else{
                     favoriteSet.remove(Integer.toString(firstOfferId));
@@ -131,6 +138,9 @@ public class ImpressionActivity extends AppCompatActivity implements SelectedIte
 
         // Get impression from server
         getImpressionItem();
+        // Firebase VIEW ITEM event
+        Bundle bundle = new Bundle();
+        addFirebaseEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle);
 
         buttonBook = findViewById(R.id.btnBook);
         buttonBook.setOnClickListener(new View.OnClickListener() {
@@ -400,6 +410,13 @@ public class ImpressionActivity extends AppCompatActivity implements SelectedIte
         editor.putString("human_name", human_name);
         editor.putString("duration_name", duration_name);
         editor.apply();
+
+        // Add_to_cart in Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putDouble(FirebaseAnalytics.Param.VALUE, orderSum);
+        bundle.putString(FirebaseAnalytics.Param.CURRENCY, "RUB");
+        addFirebaseEvent(FirebaseAnalytics.Event.ADD_TO_CART, bundle);
+
         Intent intent = new Intent(this, OrderTypeActivity.class);
         startActivity(intent);
     }
@@ -434,6 +451,14 @@ public class ImpressionActivity extends AppCompatActivity implements SelectedIte
 
         cartPrice.setText(priceTxt);
         cartCashback.setText(cashbackTxt);
+    }
+
+    /**
+     * Add event to Firebase Analytics
+     */
+    public void addFirebaseEvent(String firebaseEvent, Bundle bundle){
+        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(Activity);
+        mFirebaseAnalytics.logEvent(firebaseEvent, bundle);
     }
 
 }

@@ -11,7 +11,7 @@ android {
         applicationId "com.xpresent.xpresent"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 15
+        versionCode 19
         versionName "1.1.9"
     }
 

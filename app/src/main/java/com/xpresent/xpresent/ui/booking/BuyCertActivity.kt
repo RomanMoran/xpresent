@@ -126,6 +126,7 @@ class BuyCertActivity : AppCompatActivity() {
 
         settings =  getSharedPreferences("xp_client", Context.MODE_PRIVATE)
         sessionKey = settings?.getString("sessionKey", "")
+        orderSum = settings?.getInt("orderSum", 0) ?: 0
         buttonBook = findViewById(R.id.btnBook)
 
         initDialogs()
@@ -185,7 +186,6 @@ class BuyCertActivity : AppCompatActivity() {
         val pointTabBlock = findViewById<LinearLayout>(R.id.delivery_point)
         val radioCash = findViewById<RadioButton>(R.id.radioCash)
         val cashLine = findViewById<View>(R.id.cashLine)
-        orderSum = settings?.getInt("orderSum", 0) ?: 0
 
         when(type){
             "EMAIL" -> {
@@ -230,9 +230,6 @@ class BuyCertActivity : AppCompatActivity() {
                 deliveryOrderPrice = if(orderSum < orderPricePickupPay) pickupPrice else 0
                 setPickupPriceDelivery(findViewById(R.id.radioGroup))
             }
-        }
-        if(cashBackCharged){
-            orderSum -= availableCashBack
         }
         val delPriceTV = findViewById<TextView>(R.id.delivery_price)
         val totalPriceTV = findViewById<TextView>(R.id.total_price)
@@ -338,14 +335,16 @@ class BuyCertActivity : AppCompatActivity() {
             }
         }
         val usedCashback = if(cashBackCharged) availableCashBack.toString() else "0"
+        val totalSum = orderSum + deliveryOrderPrice
         mapPost["type"] = ordType.toString()
         mapPost["item_id"] = itemId.toString()
         mapPost["city_id"] = cityId.toString()
-        mapPost["sum"] = orderSum.toString()
+        mapPost["sum"] = totalSum.toString()
         mapPost["item_name"] = itemName
         mapPost["payment_id"] = paymentId.toString() // bank card
         mapPost["delivery_id"] = deliveryId.toString() // тип доставки
         mapPost["delivery_address"] = deliveryAddress // тип доставки
+        mapPost["delivery_sum"] = deliveryOrderPrice.toString() // сумма доставки
         mapPost["comment"] = comment // комментарий
         mapPost["view_id"] = viewId.toString() // шаблон электронного сертификата
         mapPost["view_text"] = etCongratText.text.toString() // текст поздравления
@@ -414,10 +413,11 @@ class BuyCertActivity : AppCompatActivity() {
     }
 
     private fun createPaymentOptions(): PaymentOptions {
+        var totalSum = orderSum + deliveryOrderPrice
         return PaymentOptions().setOptions {
                     orderOptions {                          // данные заказа
                         orderId = ordId.toString()                // ID заказа в вашей системе
-                        amount = Money.ofRubles(orderSum.toLong())       // сумма для оплаты
+                        amount = Money.ofRubles(totalSum.toLong())       // сумма для оплаты
                         title = resources.getString(R.string.payment_coment)+orderId          // название платежа, видимое пользователю
                         description = itemName    // описание платежа, видимое пользователю
                         recurrentPayment = false            // флаг определяющий является ли платеж рекуррентным [1]
@@ -793,6 +793,14 @@ class BuyCertActivity : AppCompatActivity() {
         priceTxt.text = sum
         totalPriceTxt.text = sum
         earnCashBackTxt.text = Html.fromHtml(earnCashBackStr)
+
+        // Begin checkout in Firebase Analytics
+        var mFirebaseAnalytics: FirebaseAnalytics? = null
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        val bundle = Bundle()
+        bundle.putDouble(FirebaseAnalytics.Param.VALUE, orderSum.toDouble());
+        bundle.putString(FirebaseAnalytics.Param.CURRENCY, "RUB")
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.BEGIN_CHECKOUT, bundle)
     }
 
     private val radioButtonView get() = layoutInflater
